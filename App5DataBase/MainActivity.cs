@@ -118,6 +118,8 @@ namespace App5DataBase
                     db.deleteProduct(e);
                     mAdapter.mProducts.Remove(e);
                     mAdapter.NotifyItemRemoved(e.Position);
+                 
+                    Toast.MakeText(this, " The product "+e.ToString()+" was deleted! ", ToastLength.Long).Show();
                 });
                 alertDialog.SetNegativeButton("NO", (IDialogInterfaceOnClickListener)null);
                 alertDialog.Create();

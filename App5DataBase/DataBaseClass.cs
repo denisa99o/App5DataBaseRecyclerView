@@ -82,6 +82,10 @@ namespace App5DataBase
         [MaxLength(8)]
         public string Name { get; set; }
         public string Cantity { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
     
     public class Product : ProductTable
