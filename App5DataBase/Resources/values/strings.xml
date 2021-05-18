@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App5DataBase</string>
+    <string name="action_settings">Settings</string>
+     <string name="menuItem1">Item 1</string>
+    <string name="menuItem2">Edit</string>
+    <string name="menuItem3">Delete</string>
+</resources>
