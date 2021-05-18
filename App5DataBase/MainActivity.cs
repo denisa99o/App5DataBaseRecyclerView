@@ -288,6 +288,7 @@ namespace App5DataBase
         
 
 
+
         public override int ItemCount => mProducts.Count;
         void OnClick(int position)
         {
