@@ -92,4 +92,26 @@
 		/>
   </LinearLayout>
 
+	
+ <LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="30dp"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Alege un magazin"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			android:paddingLeft="10sp"
+		 />
+		<Spinner
+			android:id="@+id/spinner"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		/>
+	</LinearLayout>
+
 </LinearLayout>

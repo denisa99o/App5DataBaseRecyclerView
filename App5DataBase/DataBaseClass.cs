@@ -86,6 +86,8 @@ namespace App5DataBase
         {
             return Name;
         }
+        public int magazinId { get; set; }
+
     }
     
     public class Product : ProductTable
@@ -100,8 +102,13 @@ namespace App5DataBase
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
-        [MaxLength(8)]
+        [MaxLength(8),Unique]
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
         public string Locatie { get; set; }
 
     }
