@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Activity2EditPage.cs" />
     <Compile Include="Activity3InsertData.cs" />
+    <Compile Include="ProductFilter.cs" />
     <Compile Include="DataBaseClass.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="MainActivity.cs" />

@@ -18,6 +18,27 @@
 		   
 		/>
 
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Filtreaza produsele dupa magazine"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			android:paddingLeft="10sp"
+		 />
+		<Spinner
+			android:id="@+id/spinnerMagazine"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		/>
+	</LinearLayout>
+
 	<android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:scrollbars="vertical"

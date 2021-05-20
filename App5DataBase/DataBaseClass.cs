@@ -73,6 +73,15 @@ namespace App5DataBase
            
         }
 
+        public List<Magazin> GetMagazins()
+        {
+            return db.Query<Magazin>("select * from Magazin");
+        }
+
+        public Magazin GetMagazinById(int id)
+        {
+            return db.Get<Magazin>(id);
+        }
     }
     [Table("Product")]
     public class ProductTable
@@ -112,5 +121,7 @@ namespace App5DataBase
         public string Locatie { get; set; }
 
     }
+
+   
     
 }

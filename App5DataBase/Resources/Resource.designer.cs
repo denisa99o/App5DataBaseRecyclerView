@@ -2498,11 +2498,11 @@ namespace App5DataBase
 			// aapt resource value: 0x7f08003d
 			public const int bottom = 2131230781;
 			
-			// aapt resource value: 0x7f0800a3
-			public const int btnEdit = 2131230883;
+			// aapt resource value: 0x7f0800a4
+			public const int btnEdit = 2131230884;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int btnInsert = 2131230885;
+			// aapt resource value: 0x7f0800a6
+			public const int btnInsert = 2131230886;
 			
 			// aapt resource value: 0x7f08008b
 			public const int btnInsertData = 2131230859;
@@ -2543,14 +2543,14 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080039
 			public const int collapseActionView = 2131230777;
 			
-			// aapt resource value: 0x7f08008f
-			public const int container = 2131230863;
+			// aapt resource value: 0x7f080090
+			public const int container = 2131230864;
 			
 			// aapt resource value: 0x7f080066
 			public const int contentPanel = 2131230822;
 			
-			// aapt resource value: 0x7f080090
-			public const int coordinator = 2131230864;
+			// aapt resource value: 0x7f080091
+			public const int coordinator = 2131230865;
 			
 			// aapt resource value: 0x7f08006d
 			public const int custom = 2131230829;
@@ -2564,20 +2564,20 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080060
 			public const int default_activity_button = 2131230816;
 			
-			// aapt resource value: 0x7f080092
-			public const int design_bottom_sheet = 2131230866;
+			// aapt resource value: 0x7f080093
+			public const int design_bottom_sheet = 2131230867;
+			
+			// aapt resource value: 0x7f08009a
+			public const int design_menu_item_action_area = 2131230874;
 			
 			// aapt resource value: 0x7f080099
-			public const int design_menu_item_action_area = 2131230873;
+			public const int design_menu_item_action_area_stub = 2131230873;
 			
 			// aapt resource value: 0x7f080098
-			public const int design_menu_item_action_area_stub = 2131230872;
+			public const int design_menu_item_text = 2131230872;
 			
 			// aapt resource value: 0x7f080097
-			public const int design_menu_item_text = 2131230871;
-			
-			// aapt resource value: 0x7f080096
-			public const int design_navigation_view = 2131230870;
+			public const int design_navigation_view = 2131230871;
 			
 			// aapt resource value: 0x7f080020
 			public const int disableHome = 2131230752;
@@ -2651,17 +2651,17 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f08009c
-			public const int label2_name = 2131230876;
+			// aapt resource value: 0x7f08009d
+			public const int label2_name = 2131230877;
 			
-			// aapt resource value: 0x7f08009f
-			public const int label3_cantitate = 2131230879;
+			// aapt resource value: 0x7f0800a0
+			public const int label3_cantitate = 2131230880;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int label4 = 2131230882;
+			// aapt resource value: 0x7f0800a3
+			public const int label4 = 2131230883;
 			
-			// aapt resource value: 0x7f08008e
-			public const int largeLabel = 2131230862;
+			// aapt resource value: 0x7f08008f
+			public const int largeLabel = 2131230863;
 			
 			// aapt resource value: 0x7f080049
 			public const int left = 2131230793;
@@ -2705,8 +2705,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f080095
-			public const int navigation_header_container = 2131230869;
+			// aapt resource value: 0x7f080096
+			public const int navigation_header_container = 2131230870;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2747,8 +2747,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080075
 			public const int radio = 2131230837;
 			
-			// aapt resource value: 0x7f08008c
-			public const int recyclerView = 2131230860;
+			// aapt resource value: 0x7f08008d
+			public const int recyclerView = 2131230861;
 			
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
@@ -2831,14 +2831,14 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080025
 			public const int showTitle = 2131230757;
 			
-			// aapt resource value: 0x7f08008d
-			public const int smallLabel = 2131230861;
+			// aapt resource value: 0x7f08008e
+			public const int smallLabel = 2131230862;
+			
+			// aapt resource value: 0x7f080095
+			public const int snackbar_action = 2131230869;
 			
 			// aapt resource value: 0x7f080094
-			public const int snackbar_action = 2131230868;
-			
-			// aapt resource value: 0x7f080093
-			public const int snackbar_text = 2131230867;
+			public const int snackbar_text = 2131230868;
 			
 			// aapt resource value: 0x7f080043
 			public const int snap = 2131230787;
@@ -2846,8 +2846,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080064
 			public const int spacer = 2131230820;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int spinner = 2131230886;
+			// aapt resource value: 0x7f08008c
+			public const int spinnerMagazine = 2131230860;
 			
 			// aapt resource value: 0x7f080008
 			public const int split_action_bar = 2131230728;
@@ -2891,8 +2891,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080069
 			public const int textSpacerNoTitle = 2131230825;
 			
-			// aapt resource value: 0x7f08009a
-			public const int text_input_password_toggle = 2131230874;
+			// aapt resource value: 0x7f08009b
+			public const int text_input_password_toggle = 2131230875;
 			
 			// aapt resource value: 0x7f080014
 			public const int textinput_counter = 2131230740;
@@ -2918,8 +2918,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f08006e
 			public const int topPanel = 2131230830;
 			
-			// aapt resource value: 0x7f080091
-			public const int touch_outside = 2131230865;
+			// aapt resource value: 0x7f080092
+			public const int touch_outside = 2131230866;
 			
 			// aapt resource value: 0x7f08000f
 			public const int transition_current_scene = 2131230735;
@@ -2936,8 +2936,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080013
 			public const int transition_transform = 2131230739;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int txtCantitate = 2131230880;
+			// aapt resource value: 0x7f0800a1
+			public const int txtCantitate = 2131230881;
 			
 			// aapt resource value: 0x7f0800a9
 			public const int txtMessage = 2131230889;
@@ -2945,8 +2945,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f0800a7
 			public const int txtName = 2131230887;
 			
-			// aapt resource value: 0x7f08009d
-			public const int txtNume = 2131230877;
+			// aapt resource value: 0x7f08009e
+			public const int txtNume = 2131230878;
 			
 			// aapt resource value: 0x7f0800a8
 			public const int txtSubject = 2131230888;
@@ -2960,17 +2960,17 @@ namespace App5DataBase
 			// aapt resource value: 0x7f080026
 			public const int useLogo = 2131230758;
 			
-			// aapt resource value: 0x7f0800a4
-			public const int view1 = 2131230884;
+			// aapt resource value: 0x7f0800a5
+			public const int view1 = 2131230885;
 			
-			// aapt resource value: 0x7f08009b
-			public const int view2 = 2131230875;
+			// aapt resource value: 0x7f08009c
+			public const int view2 = 2131230876;
 			
-			// aapt resource value: 0x7f08009e
-			public const int view3 = 2131230878;
+			// aapt resource value: 0x7f08009f
+			public const int view3 = 2131230879;
 			
-			// aapt resource value: 0x7f0800a1
-			public const int view4 = 2131230881;
+			// aapt resource value: 0x7f0800a2
+			public const int view4 = 2131230882;
 			
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
