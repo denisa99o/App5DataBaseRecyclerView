@@ -40,6 +40,7 @@ namespace App5DataBase
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
 
+            //Allow or Not - fereastra care te intreaba daca esti de acord 
 
             var listPermissions = new System.Collections.Generic.List<string>();
 
@@ -203,7 +204,7 @@ namespace App5DataBase
             Magazin newMagazin = new Magazin();
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
             mProducts = db.getAllProducts();
-            mProductsCopy = new List<Product>();
+            mProductsCopy = new List<Product>(); //lista copie 
             mProductsCopy.AddRange(mProducts);
             mMagazin = db.getAllMagazin();
 
@@ -248,19 +249,19 @@ namespace App5DataBase
 
         private void Filter()
         {
-            List<Product> listaNouaProduse = new List<Product>();
-            if (spinnerMagazine.SelectedItem.ToString().Equals("Magazine"))
+            List<Product> listaNouaProduse = new List<Product>(); //construim o noua lista de produse
+            if (spinnerMagazine.SelectedItem.ToString().Equals("Magazine")) //daca selectia din spinner e by default->adica Magazine -> la lista de produse ii dam lista copiata
                 mProducts = mProductsCopy;
             else
             {
-                foreach (Product product in mProductsCopy)
-                {
+                foreach (Product product in mProductsCopy) //luam fiecare produs din lista copiata-> daca produsul respectiv are Id-ul magazinului egal cu ceea ce am selectat in spinner-> in lista noua de produse se adauga produsul
+                { 
                     if (product.magazinId == arrayAdapter.GetItem(spinnerMagazine.SelectedItemPosition).Id)
                         listaNouaProduse.Add(product);
                 }
-                mProducts = listaNouaProduse;
+                mProducts = listaNouaProduse; //la lista noastra initiala de produse se adauga si ceea ce am adaugat in lista noua
             }
-            mAdapter.mProducts = mProducts;
+            mAdapter.mProducts = mProducts;  //se actualizeaza adapterul cu lista noua
             mAdapter.NotifyDataSetChanged();
         }
 
@@ -377,7 +378,7 @@ namespace App5DataBase
             TextView txtMessage = Itemi.FindViewById<TextView>(Resource.Id.txtMessage);
             CheckBox mDeleteProduct = Itemi.FindViewById<CheckBox>(Resource.Id.btn_delete);
             CheckBox mEditProduct = Itemi.FindViewById<CheckBox>(Resource.Id.btn_edit);
-
+          // LinearLayout hiddenLayout=Itemi.FindViewById<LinearLayout>(Resource.Id.showMoreLayout);
             //mEditProduct.Click += MEditProduct_Click;
 
             MyView view = new MyView(Itemi, OnCellClick_ButtonDelete, OnCellClick_ButtonEdit) { mName = txtName, mSubject = txtSubject, mMessage = txtMessage, mDeleteProduct = mDeleteProduct, mEditProduct = mEditProduct };
@@ -426,7 +427,11 @@ namespace App5DataBase
         public void OnClick(View v)
         {
             //throw new NotImplementedException();
-            itemPosition = recyclerView.GetChildAdapterPosition(v);
+            //  itemPosition = recyclerView.GetChildAdapterPosition(v);
+          //  if (hiddenLayout.Visibility == ViewStates.Gone)
+           //     hiddenLayout.Visibility = ViewStates.Visible;
+          //  else
+           //     hiddenLayout.Visibility = ViewStates.Gone;
         }
 
         public void setProduct(JavaList<Product> product)
@@ -453,6 +458,7 @@ namespace App5DataBase
         private Action<Product> _cellClick_ButtonEdit;
 
         public Product product { get; set; }
+      //  public LinearLayout hiddenLayout { get; private set; }
 
         public MyView(View view, Action<Product> buttonDelete, Action<Product> buttonEdit) : base(view)
         {

@@ -40,7 +40,7 @@ namespace App5DataBase
             spinnerMagazine = FindViewById<Spinner>(Resource.Id.spinnerMagazine);
             arrayAdapter = new ArrayAdapter<Magazin>(this, Resource.Layout.support_simple_spinner_dropdown_item);
             List<Magazin> magazine = Activity3InsertData.database.GetMagazins();
-            arrayAdapter.AddAll(magazine);
+            arrayAdapter.AddAll(magazine); //adaug magazine in spinner
             arrayAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             
            spinnerMagazine.Adapter = arrayAdapter; 
