@@ -19,6 +19,7 @@ namespace App5DataBase
         EditText txtCantitate;
         Spinner spinnerMagazine;
         List<Magazin> magazine;
+       // EditText txtMagazin;
         public static DataBaseClass database;
         ArrayAdapter<Magazin> arrayAdapter;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -42,6 +43,19 @@ namespace App5DataBase
             spinnerMagazine.Adapter = arrayAdapter;
 
             // Create your application here
+
+            //Ca sa imi apara in EditText datele produsului pe care vreau sa il editez
+            Product product; //creez un nou produs
+            string jsonProduct = Intent.Extras.GetString("product"); //ii iau datele
+            product= JsonSerializer.Deserialize<Product>(jsonProduct); //il deserializez-din string face obiect
+            txtNume.Text = product.Name; //pun in EditText-ul txtNume pun numele produsului 
+            txtCantitate.Text = product.Cantity; 
+            spinnerMagazine.SetSelection(magazine.IndexOf(magazine.Where(i => (i.Id == product.magazinId)).FirstOrDefault())); //verific Id-ul magazinului care e egal cu magazinId din tabela Produse al produsului respectiv
+            //=> in spinner va aparea magazinul curent al produsului 
+
+           // txtMagazin = FindViewById<EditText>(Resource.Id.txtMagazin);
+            //txtMagazin.Text = product.magazinId.ToString();
+
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)

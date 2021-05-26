@@ -23,10 +23,11 @@
 	/>
 
     <EditText
-      android:id="@+id/txtNume"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-      android:layout_weight="90"
+        android:id="@+id/txtNume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="90"
+        android:hint="Enter product name"
      
           
 		/>
@@ -54,7 +55,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 		android:layout_weight="90"
-	
+	    android:hint="Enter cantity"
         android:inputType="number"
 		/>
   </LinearLayout>

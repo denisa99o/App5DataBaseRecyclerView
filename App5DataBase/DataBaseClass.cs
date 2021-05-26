@@ -60,6 +60,8 @@ namespace App5DataBase
             db.Insert(product);
         }
 
+       
+
         //public string insertProducts(string _id, string Name, string Cantity)
         //{
         //    db.Query<Product>("Insert into Product([Id],[Name],[Cantity]) values ('"+_id+ "','" + Name + "','" + Cantity + "')");
@@ -96,6 +98,11 @@ namespace App5DataBase
             return Name;
         }
         public int magazinId { get; set; }
+
+        [Ignore]
+        public bool Checked { get; set; } = false; //folosit pentru stergere multipla
+
+
 
     }
     

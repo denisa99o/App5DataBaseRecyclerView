@@ -26,29 +26,54 @@
       android:paddingLeft="10dp"
       android:paddingBottom="10dp">
 
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>			
+
+
+		 <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+       android:textStyle="bold"
+      android:textColor="#000"
+      android:text="Denumire:"
+      android:id="@+id/txtN"
+      android:gravity="center_vertical"
+      android:padding="2dp"
+      android:textSize="18sp"
+      />
+
     <TextView
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
        android:textStyle="bold"
       android:textColor="#000"
       android:text="Name"
-      android:layout_weight="30"
       android:id="@+id/txtName"
-      android:gravity="center_vertical"
+      android:gravity="center"
       android:padding="2dp"
       android:textSize="18sp"
+   
       
 	/>
 
+	
+</LinearLayout>
 
-    <TextView
-      android:layout_width="match_parent"
+<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>			
+ <TextView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textStyle="bold"
       android:textColor="#000"
-      android:text="Subject"
-      android:layout_weight="30"
-      android:id="@+id/txtSubject"
+      android:text="Cantitate:"
+      android:id="@+id/txtS"
       android:gravity="center_vertical"
       android:padding="2dp"
       android:textSize="16sp"
@@ -56,20 +81,54 @@
       />
 
     <TextView
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textStyle="bold"
+      android:textColor="#000"
+      android:text="Subject"
+      android:id="@+id/txtSubject"
+      android:gravity="center"
+      android:padding="2dp"
+      android:textSize="16sp"
+     
+      />
+</LinearLayout>
+
+			<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>			
+
+		<TextView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       
       android:textStyle="bold"
       android:textColor="#000"
-      android:text="Message"
-      android:layout_weight="30"
-      android:id="@+id/txtMessage"
+      android:text="Id:"
+      android:id="@+id/txtM"
       android:gravity="center_vertical"
       android:padding="2dp"
       android:textSize="14sp"
       android:singleLine="true"
       />
 
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      
+      android:textStyle="bold"
+      android:textColor="#000"
+      android:text="Message"
+     
+      android:id="@+id/txtMessage"
+      android:gravity="center_vertical"
+      android:padding="2dp"
+      android:textSize="14sp"
+      android:singleLine="true"
+      />
+</LinearLayout>
   </LinearLayout>
 
   <LinearLayout
@@ -82,7 +141,7 @@
 	  android:gravity="right">
 
     	<CheckBox
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			
 			android:id="@+id/btn_edit"
@@ -92,14 +151,22 @@
 
 
 		<CheckBox
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:id="@+id/btn_delete"
 			android:button="@android:drawable/ic_delete"
 	
 	  	
         />
-   
+				<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/btn_multipleDelete"
+			android:button="@drawable/abc_btn_check_material"
+	
+	  	
+        />
+     
   </LinearLayout>
 			
 		</LinearLayout>

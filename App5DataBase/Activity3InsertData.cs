@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -23,6 +24,8 @@ namespace App5DataBase
         List<Magazin> magazine;
         public static DataBaseClass database;
         ArrayAdapter<Magazin> arrayAdapter;
+        private static readonly int NOTIFICATION_ID = 10023;
+        private static readonly string CHANNEL_ID ="location_notification";
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,10 +49,17 @@ namespace App5DataBase
            spinnerMagazine.Adapter = arrayAdapter; 
             // Create your application here
 
-        }
 
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
         private void BtnInsert_Click(object sender, EventArgs e)
         {
+            
+
             // throw new NotImplementedException();
             Product product = new Product();
             product.Name = txtNume.Text;
@@ -62,6 +72,14 @@ namespace App5DataBase
             intent.PutExtra("product", jsonString);
             SetResult(Result.Ok, intent);
             Finish();
+
+            var builder = new Notification.Builder(this, CHANNEL_ID).SetAutoCancel(true)
+            .SetContentTitle("Button Clicked")
+            .SetSmallIcon(Resource.Drawable.abc_ic_star_black_36dp)
+            .SetContentText("A new element was inserted in the list");
+
+            var nmc = NotificationManager.FromContext(this);
+            nmc.Notify(NOTIFICATION_ID, builder.Build());
 
         }
     }

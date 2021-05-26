@@ -24,6 +24,7 @@ namespace App5DataBase
         public RecyclerAdapter mAdapter;
         private List<Product> mProducts;
         private List<Product> mProductsCopy;
+        private List<Product> mProductsCD;
         private List<Magazin> mMagazin;
         public IMenu menu;
         DataBaseClass db;
@@ -31,6 +32,7 @@ namespace App5DataBase
         Spinner spinnerMagazine;
         public static DataBaseClass database;
         ArrayAdapter<Magazin> arrayAdapter;
+        
         // public Button btnInsertData;
 
         // public CheckBox mDeleteProduct;
@@ -148,10 +150,12 @@ namespace App5DataBase
             {
                 Product product;
                 string jsonProduct = data.GetStringExtra("product");
-                product = JsonSerializer.Deserialize<Product>(jsonProduct);
+                product = JsonSerializer.Deserialize<Product>(jsonProduct); //deserializez
+
                 product.Id = mAdapter.mProducts[lastPosition].Id;
                 mProductsCopy[mProductsCopy.IndexOf(mProducts[lastPosition])] = product;
                 mAdapter.mProducts[lastPosition] = product;
+             
 
                 db.updateProduct(product);
                 //       SpinnerMagazine_ItemSelected(null, new AdapterView.ItemSelectedEventArgs(null,null,lastPosition,lastPosition));
@@ -167,8 +171,7 @@ namespace App5DataBase
                 product = JsonSerializer.Deserialize<Product>(jsonProduct);
                 //mAdapter.mProducts.Add(product);
                
-
-              if (!spinnerMagazine.SelectedItem.ToString().Equals("Magazine")) //daca item-ul ales este diferit de cuvantul default Magazine -> produsul este pus in lista copie
+                if (!spinnerMagazine.SelectedItem.ToString().Equals("Magazine")) //daca item-ul ales este diferit de cuvantul default Magazine -> produsul este pus in lista copie
                   mProductsCopy.Add(product);
 
                mAdapter.mProducts.Add(product); //produsul este adaugat in adapter, pe interfata
@@ -204,8 +207,11 @@ namespace App5DataBase
             Magazin newMagazin = new Magazin();
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
             mProducts = db.getAllProducts();
-            mProductsCopy = new List<Product>(); //lista copie 
+            mProductsCopy = new List<Product>(); //lista copie pt filtrare
             mProductsCopy.AddRange(mProducts);
+
+            mProductsCD = new List<Product>(); //lista copie pt stergere multipla
+            mProductsCD.AddRange(mProducts);
             mMagazin = db.getAllMagazin();
 
             //create our layout manager
@@ -237,6 +243,43 @@ namespace App5DataBase
 
             spinnerMagazine.ItemSelected += SpinnerMagazine_ItemSelected;
 
+            Button mMultipleDelete = FindViewById<Button>(Resource.Id.btnMultipleDelete);
+            mMultipleDelete.Click += MMultipleDelete_Click;
+
+        }
+
+        private void MMultipleDelete_Click(object sender, EventArgs e)
+        {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+            alertDialog.SetTitle("Are you sure?");
+            alertDialog.SetMessage("Do you want to delete this item?");
+            alertDialog.SetPositiveButton("yes", delegate
+            {
+
+            // throw new NotImplementedException();
+            List<Product> listaNouaProduse = new List<Product>(); //construim o noua lista de produse
+               
+            listaNouaProduse.AddRange(mProducts); //populez lista noua
+              foreach (Product product in mProductsCD) //luam fiecare produs din lista copiata-> daca produsul respectiv are Id-ul magazinului egal cu ceea ce am selectat in spinner-> in lista noua de produse se adauga produsul
+               
+            if (product.Checked)  //am inclus Checked ca si coloana[Ignore] in clasa Produse
+                {
+                   listaNouaProduse.Remove(product);
+                   db.deleteProduct(product);
+                   mProductsCopy.Remove(product); //ca sa sterg produsele din lista copie de la filtrare
+                   Toast.MakeText(this, "The selected products were deleted!", ToastLength.Long).Show();
+                }
+              
+            mProducts = listaNouaProduse; //la lista noastra initiala de produse se adauga listaNouaProduse(am sters din ea elemente)
+            
+            mAdapter.mProducts = mProducts;  //se actualizeaza adapterul cu lista noua
+            mAdapter.NotifyDataSetChanged();
+            });
+
+            alertDialog.SetNegativeButton("NO", (IDialogInterfaceOnClickListener)null);
+            alertDialog.Create();
+            alertDialog.Show();
         }
 
         private void SpinnerMagazine_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -249,17 +292,18 @@ namespace App5DataBase
 
         private void Filter()
         {
-            List<Product> listaNouaProduse = new List<Product>(); //construim o noua lista de produse
+            List<Product> listaNouaProduseFiltrare = new List<Product>(); //construim o noua lista de produse
             if (spinnerMagazine.SelectedItem.ToString().Equals("Magazine")) //daca selectia din spinner e by default->adica Magazine -> la lista de produse ii dam lista copiata
                 mProducts = mProductsCopy;
+
             else
             {
                 foreach (Product product in mProductsCopy) //luam fiecare produs din lista copiata-> daca produsul respectiv are Id-ul magazinului egal cu ceea ce am selectat in spinner-> in lista noua de produse se adauga produsul
                 { 
                     if (product.magazinId == arrayAdapter.GetItem(spinnerMagazine.SelectedItemPosition).Id)
-                        listaNouaProduse.Add(product);
+                        listaNouaProduseFiltrare.Add(product);
                 }
-                mProducts = listaNouaProduse; //la lista noastra initiala de produse se adauga si ceea ce am adaugat in lista noua
+                mProducts = listaNouaProduseFiltrare; //la lista noastra initiala de produse se adauga si ceea ce am adaugat in lista noua
             }
             mAdapter.mProducts = mProducts;  //se actualizeaza adapterul cu lista noua
             mAdapter.NotifyDataSetChanged();
@@ -274,9 +318,13 @@ namespace App5DataBase
             //throw new NotImplementedException();
             Intent nextActivity = new Intent(this, typeof(Activity2EditPage));
             // lastPosition = position;
+            
             e.Position = mAdapter.mProducts.IndexOf(e); //here is the position
             lastPosition = e.Position;
-            StartActivityForResult(nextActivity, 222);
+            //ca sa imi apara datele produsului pe care vreau sa il editez in EditText
+            string jsonProduct = JsonSerializer.Serialize<Product>(mProducts[lastPosition]); //Seriallizez produsul selecat-ii iau toate datele
+            nextActivity.PutExtra("product", jsonProduct); //trimit eticheta produsului "Key" si data care vreau sa fie transferata, adica toate datele despre produs
+            StartActivityForResult(nextActivity, 222); //merge in 222
 
         }
 
@@ -331,6 +379,7 @@ namespace App5DataBase
         private RecyclerView recyclerView;
         private DataBaseClass db;
         MainActivity mainActivity;
+
         //Open Activity2EditPage
         public event EventHandler<int> ItemClick;
         public event EventHandler<Product> CellClick_ButtonDelete;
@@ -378,15 +427,23 @@ namespace App5DataBase
             TextView txtMessage = Itemi.FindViewById<TextView>(Resource.Id.txtMessage);
             CheckBox mDeleteProduct = Itemi.FindViewById<CheckBox>(Resource.Id.btn_delete);
             CheckBox mEditProduct = Itemi.FindViewById<CheckBox>(Resource.Id.btn_edit);
-          // LinearLayout hiddenLayout=Itemi.FindViewById<LinearLayout>(Resource.Id.showMoreLayout);
+
+            CheckBox mDeleteAllProduct = Itemi.FindViewById<CheckBox>(Resource.Id.btn_multipleDelete); //checkBoxul pentru stergere multipla-> pus in MyView
+            // LinearLayout hiddenLayout=Itemi.FindViewById<LinearLayout>(Resource.Id.showMoreLayout);
             //mEditProduct.Click += MEditProduct_Click;
 
-            MyView view = new MyView(Itemi, OnCellClick_ButtonDelete, OnCellClick_ButtonEdit) { mName = txtName, mSubject = txtSubject, mMessage = txtMessage, mDeleteProduct = mDeleteProduct, mEditProduct = mEditProduct };
+
+            //Tot ce apare pe un card-pe Itemi-trebuie sa fie aici
+            MyView view = new MyView(Itemi, OnCellClick_ButtonDelete, OnCellClick_ButtonEdit) { mName = txtName, mSubject = txtSubject, mMessage = txtMessage, mDeleteProduct = mDeleteProduct, mEditProduct = mEditProduct, mDeleteAllProduct=mDeleteAllProduct };
             view.Update(mDeleteProduct);
             view.Update2(mEditProduct);
             return view;
 
         }
+    
+    
+
+
 
 
 
@@ -417,12 +474,23 @@ namespace App5DataBase
             myHolder.mName.Text = mProducts[position].Name;
             myHolder.mSubject.Text = mProducts[position].Cantity;
             myHolder.mMessage.Text = (mProducts[position].Id).ToString();
-
+            
             myHolder.product = mProducts[position];
+
+            //pentru stergere multipla-ca sa imi tina minte checkboxul care a fost selectat
+            //trebuie folosit AdapterPosition ca sa imi ia pozitia buna a produsului selectat
+            myHolder.mDeleteAllProduct.Checked = mProducts[myHolder.AdapterPosition].Checked; //la checkbox-ul selectat ii dau pozitia produsului din adapter
+            if (!myHolder.mDeleteAllProduct.HasOnClickListeners) //daca nu este selectat checkbox-ul
+            {
+                myHolder.mDeleteAllProduct.Click += (sender, e) => //si se apasa pe checkBox
+                {
+                    mProducts[myHolder.AdapterPosition].Checked = !mProducts[myHolder.AdapterPosition].Checked; 
+                };
+            }
+          
         }
 
-
-
+      
 
         public void OnClick(View v)
         {
@@ -458,6 +526,8 @@ namespace App5DataBase
         private Action<Product> _cellClick_ButtonEdit;
 
         public Product product { get; set; }
+
+        public CheckBox mDeleteAllProduct { get;  set; } //folosit pentru stergere multipla
       //  public LinearLayout hiddenLayout { get; private set; }
 
         public MyView(View view, Action<Product> buttonDelete, Action<Product> buttonEdit) : base(view)
