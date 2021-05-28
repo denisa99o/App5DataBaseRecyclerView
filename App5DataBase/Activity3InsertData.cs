@@ -8,6 +8,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 
@@ -24,8 +25,9 @@ namespace App5DataBase
         List<Magazin> magazine;
         public static DataBaseClass database;
         ArrayAdapter<Magazin> arrayAdapter;
-        private static readonly int NOTIFICATION_ID = 10023;
-        private static readonly string CHANNEL_ID ="location_notification";
+
+        //private static readonly int NOTIFICATION_ID = 1000;
+        //private static readonly string CHANNEL_ID ="location_notification";
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,14 +53,10 @@ namespace App5DataBase
 
 
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
-        {
-            
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
+    
         private void BtnInsert_Click(object sender, EventArgs e)
         {
-            
+           
 
             // throw new NotImplementedException();
             Product product = new Product();
@@ -73,13 +71,25 @@ namespace App5DataBase
             SetResult(Result.Ok, intent);
             Finish();
 
-            var builder = new Notification.Builder(this, CHANNEL_ID).SetAutoCancel(true)
-            .SetContentTitle("Button Clicked")
-            .SetSmallIcon(Resource.Drawable.abc_ic_star_black_36dp)
-            .SetContentText("A new element was inserted in the list");
+            //var1-NOTIFICARI--nu poate gasi canalul
+            // var builder = new NotificationCompat.Builder(this, CHANNEL_ID).SetAutoCancel(true)
+            //.SetContentTitle("Button Clicked")
+            //.SetSmallIcon(Resource.Drawable.abc_ic_star_black_36dp)
+            //.SetContentText("A new element was inserted in the list");
 
-            var nmc = NotificationManager.FromContext(this);
-            nmc.Notify(NOTIFICATION_ID, builder.Build());
+            // var nmc = NotificationManagerCompat.From(this);
+            // nmc.Notify(NOTIFICATION_ID, builder.Build());
+
+
+            //var2-NOTIFICARI-nu poate gasi canalul
+          //  NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+          //.SetAutoCancel(true)
+          //.SetContentTitle("Button Clicked")
+          //.SetSmallIcon(Resource.Drawable.navigation_empty_icon)
+          //.SetContentText("A new element was inserted in the list");
+
+          //  NotificationManager manager = (NotificationManager)GetSystemService(Context.NotificationService);
+          // manager.Notify(NOTIFICATION_ID, builder.Build());
 
         }
     }

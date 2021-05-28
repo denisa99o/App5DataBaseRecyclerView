@@ -108,6 +108,7 @@ namespace App5DataBase
         // Alert Dialog box-if you want to delete something press Yes - then the product is deleted
         private void MAdapter_CellClick_ButtonDelete(object sender, Product e)
         {
+            
             // throw new NotImplementedException();
             this.RunOnUiThread(() =>
             {
@@ -124,7 +125,7 @@ namespace App5DataBase
                     mAdapter.mProducts.Remove(e);
                     mProductsCopy.Remove(e);
                     mAdapter.NotifyItemRemoved(e.Position);
-
+                    
                     Toast.MakeText(this, " The product " + e.ToString() + " was deleted! ", ToastLength.Long).Show();
                 });
                 alertDialog.SetNegativeButton("NO", (IDialogInterfaceOnClickListener)null);
@@ -188,6 +189,7 @@ namespace App5DataBase
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults); //pentru permisiunea la camera photo
             if (requestCode == 123)
             {
                 DoStartup();
@@ -246,6 +248,17 @@ namespace App5DataBase
             Button mMultipleDelete = FindViewById<Button>(Resource.Id.btnMultipleDelete);
             mMultipleDelete.Click += MMultipleDelete_Click;
 
+
+            //Galerie-buton
+            Button btnGallery = FindViewById<Button>(Resource.Id.btnGallery);
+            btnGallery.Click += BtnGallery_Click;
+
+        }
+
+        private void BtnGallery_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(GalleryActivity));
+            StartActivity(nextActivity);
         }
 
         private void MMultipleDelete_Click(object sender, EventArgs e)
