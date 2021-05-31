@@ -10,8 +10,10 @@ using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 
 namespace App5DataBase
 {
@@ -41,6 +43,13 @@ namespace App5DataBase
 
             // Create your application here
             buttonBack.Click += ButtonBack_Click;
+
+            //slide between images
+
+            var viewPager = FindViewById<ViewPager>(Resource.Id.viewPager);
+            ImageAdpter adapter = new ImageAdpter(this);
+            viewPager.Adapter = adapter;
+
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
@@ -52,5 +61,44 @@ namespace App5DataBase
             //ca sa dau back doar trebuie sa dau finish la activitate
             Finish();
         }
+
+        
+    }
+
+    //slide between images
+    public class ImageAdpter : PagerAdapter
+    {
+        private Context context;
+        public ImageAdpter(Context context)
+        {
+            this.context = context;
+        }
+        public override int Count => GalleryActivity.mPhotoAlbum.Count;
+
+        public override bool IsViewFromObject(View view, Java.Lang.Object @object)
+        {
+            //throw new NotImplementedException();
+            return view == ((ImageView)@object);
+        }
+
+        public override Java.Lang.Object InstantiateItem(View container, int position)
+        {
+            ImageView imageView = new ImageView(context);
+            imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
+          
+            imageView.SetImageBitmap(GalleryActivity.mPhotoAlbum[position]);
+            ((ViewPager)container).AddView(imageView, 0);
+            return imageView;
+            // return base.InstantiateItem(container, position);
+        }
+       
+        public override void DestroyItem(View container, int position, Java.Lang.Object @object)
+        {
+
+            //base.DestroyItem(container, position, @object);
+            ((ViewPager)container).RemoveView((ImageView)@object);
+        }
+
+
     }
 }

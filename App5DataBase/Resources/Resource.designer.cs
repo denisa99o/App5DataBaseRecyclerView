@@ -2498,8 +2498,8 @@ namespace App5DataBase
 			// aapt resource value: 0x7f09003d
 			public const int bottom = 2131296317;
 			
-			// aapt resource value: 0x7f0900c9
-			public const int btnBack = 2131296457;
+			// aapt resource value: 0x7f0900ca
+			public const int btnBack = 2131296458;
 			
 			// aapt resource value: 0x7f0900a8
 			public const int btnCapture = 2131296424;
@@ -2699,23 +2699,23 @@ namespace App5DataBase
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900cc
-			public const int masked = 2131296460;
+			// aapt resource value: 0x7f0900cd
+			public const int masked = 2131296461;
 			
 			// aapt resource value: 0x7f0900bb
 			public const int media_actions = 2131296443;
 			
-			// aapt resource value: 0x7f0900cd
-			public const int menuItem1 = 2131296461;
-			
 			// aapt resource value: 0x7f0900ce
-			public const int menuItem2 = 2131296462;
+			public const int menuItem1 = 2131296462;
 			
 			// aapt resource value: 0x7f0900cf
-			public const int menuItem3 = 2131296463;
+			public const int menuItem2 = 2131296463;
 			
-			// aapt resource value: 0x7f0900ca
-			public const int message = 2131296458;
+			// aapt resource value: 0x7f0900d0
+			public const int menuItem3 = 2131296464;
+			
+			// aapt resource value: 0x7f0900cb
+			public const int message = 2131296459;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -3005,11 +3005,14 @@ namespace App5DataBase
 			// aapt resource value: 0x7f0900a4
 			public const int view4 = 2131296420;
 			
+			// aapt resource value: 0x7f0900c9
+			public const int viewPager = 2131296457;
+			
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900cb
-			public const int visible = 2131296459;
+			// aapt resource value: 0x7f0900cc
+			public const int visible = 2131296460;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
