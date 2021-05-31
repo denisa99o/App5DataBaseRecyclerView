@@ -79,6 +79,7 @@ namespace App5DataBase
         {
             //throw new NotImplementedException();
             TakePhoto();
+           
 
         }
 
@@ -107,6 +108,9 @@ namespace App5DataBase
             Bitmap bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
             thisImageViewCapture.SetImageBitmap(bitmap);
 
+           //ca sa imi apara pe interfata imaginea nou facuta
+            mAdapter.mPhotoAlbum.Add(bitmap);
+            mAdapter.NotifyDataSetChanged(); //ca sa imi apara imediat ce fac poza, daca nu pun notify, imi va aparea doar dupa ce intru a doua oara in Galerie
         }
 
 
@@ -138,7 +142,7 @@ namespace App5DataBase
         }
 
 
-
+        //ia toate path-urile imaginilor din telefon, le cauta dupa extensia .jpg
         public List<string> GetAllImagePath()
     {
 
