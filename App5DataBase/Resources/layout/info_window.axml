@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#E2E2E2"
+	android:weightSum="100"
+    android:minWidth="700px">
+
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="50"
+		android:id="@+id/imageView1"
+		/>
+	<LinearLayout
+		android:layout_width="match_parent"
+    android:layout_height="match_parent"
+		android:layout_marginTop="10dp"
+		android:layout_weight="50"
+		android:orientation="vertical"
+		>
+		<TextView
+		android:text="Name"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/txtName"
+			android:gravity="center"
+			android:layout_marginBottom="10dp"
+			android:textColor="#000"
+		/>
+
+		<TextView
+		android:text="Address"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/txtAddress"
+			android:gravity="center"
+			android:layout_marginBottom="10dp"
+			android:textColor="#000"
+		/>
+
+			<TextView
+		android:text="Number"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/txtNumber"
+			android:gravity="center"
+			android:layout_marginBottom="10dp"
+			android:textColor="#000"
+		/>
+
+	</LinearLayout>
+
+</LinearLayout>

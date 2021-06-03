@@ -11,27 +11,48 @@ using Android.Views;
 using Android.Widget;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-
+using static Android.Gms.Maps.GoogleMap;
 
 namespace App5DataBase
 {
     [Activity(Label = "MapActivity")]
-    public class MapActivity : Activity, IOnMapReadyCallback
+    public class MapActivity : Activity, IOnMapReadyCallback, IInfoWindowAdapter
     {
+        private Button btnNormal;
+        private Button btnHybrid;
+        private Button btnSatellite;
+        private Button btnTerrain;
+        private GoogleMap mMap;
         private DataBaseClass database;
         JavaList<Magazin> mMagazine;
+
 
         public void OnMapReady(GoogleMap googleMap)
         {
             // throw new NotImplementedException();
+            mMap = googleMap;
+           // googleMap.MyLocationEnabled = true;
+            LatLng latlng = new LatLng(46.770439, 23.591423);
+            LatLng latlng2 = new LatLng(47, 23.591423);
+
+            CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(latlng,10); //pune camera pe marker
+            googleMap.MoveCamera(cameraUpdate);
+            //we create an instance of Marker Options
             MarkerOptions markerOptions = new MarkerOptions();
-            googleMap.MyLocationEnabled = true;
-            markerOptions.SetPosition(new LatLng(16.03, 108));
-            markerOptions.SetTitle("My Position");
+            markerOptions.SetPosition(latlng);
+            markerOptions.SetTitle("My location");
+            markerOptions.SetSnippet("Cluj-Napoca");
+            markerOptions.Draggable(true); //pot misca marker-ul pe harta
+
+            //add another marker
+
+
             //  How to design the marker - asa obtin un marcaj albastru
             //  var bmDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan);
             //  markerOptions.InvokeIcon(bmDescriptor);
+            //Marker1
             googleMap.AddMarker(markerOptions); //To add a marker
+
             //foreach (Magazin m in mMagazine)
             //{
             //    MarkerOptions markerOptions = new MarkerOptions();
@@ -75,6 +96,34 @@ namespace App5DataBase
 
             //googleMap.MoveCamera(cameraUpdate);
 
+            // Marker 2
+            googleMap.AddMarker(new MarkerOptions()
+                .SetPosition(latlng2)
+                .SetTitle("Marker 2")
+                .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
+
+            mMap.MarkerClick += MMap_MarkerClick;
+                
+            mMap.MarkerDragEnd += MMap_MarkerDragEnd;
+            mMap.SetInfoWindowAdapter(this);
+        }
+
+        private void MMap_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
+        {
+            // throw new NotImplementedException();
+            LatLng pos = e.Marker.Position;
+            mMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(pos, 10));
+
+        }
+
+        private void MMap_MarkerDragEnd(object sender, GoogleMap.MarkerDragEndEventArgs e)
+        {
+            //throw new NotImplementedException();
+     
+                LatLng pos = e.Marker.Position;
+                Console.WriteLine(pos.ToString());
+
+            
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -96,6 +145,60 @@ namespace App5DataBase
 
             foreach (Magazin m in database.getAllMagazin())
                mMagazine.Add(m);
+
+            btnNormal = FindViewById<Button>(Resource.Id.btnNormal);
+            btnHybrid = FindViewById<Button>(Resource.Id.btnHybrid);
+            btnSatellite = FindViewById<Button>(Resource.Id.btnSatellite);
+            btnTerrain = FindViewById<Button>(Resource.Id.btnTerrain);
+
+            btnNormal.Click += BtnNormal_Click;
+            btnHybrid.Click += BtnHybrid_Click;
+            btnSatellite.Click += BtnSatellite_Click;
+            btnTerrain.Click += BtnTerrain_Click;
+
+           
+
+        }
+
+      
+
+        private void BtnTerrain_Click(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+            mMap.MapType = GoogleMap.MapTypeTerrain;
+        }
+
+        private void BtnSatellite_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            mMap.MapType = GoogleMap.MapTypeSatellite;
+        }
+
+        private void BtnHybrid_Click(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+            mMap.MapType = GoogleMap.MapTypeHybrid;
+        }
+
+        private void BtnNormal_Click(object sender, EventArgs e)
+        {
+            //  throw new NotImplementedException();
+            mMap.MapType = GoogleMap.MapTypeNormal;
+        }
+
+        public View GetInfoContents(Marker marker)
+        {
+            //throw new NotImplementedException();
+            return null;
+        }
+
+        public View GetInfoWindow(Marker marker)
+        {
+            // throw new NotImplementedException();
+            View view = LayoutInflater.Inflate(Resource.Layout.info_window, null, false);
+            view.FindViewById<TextView>(Resource.Id.txtName).Text = "Xamarin";
+
+            return view;
         }
     }
 }

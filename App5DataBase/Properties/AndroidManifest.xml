@@ -9,15 +9,18 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  
+  <!-- Necessary for apps that target Android 9.0 or higher -->
   <uses-library android:name="org.apache.http.legacy" android:required="false" />
   <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+  <!-- Google Maps for Android v2 requires OpenGL ES v2 -->
   <uses-features android:glEsVersion ="0x0020000" android:required="true" />
 	<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
 		
     <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
       </provider>
-    
+    <!-- Put your Google Maps V2 API Key here. -->
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCXPLX5HPYK3x7XUwAfaSiHaf60t8Y7jdo" />
     <meta-data android:name="com.google.android.geo.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
