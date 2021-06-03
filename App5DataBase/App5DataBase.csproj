@@ -59,6 +59,7 @@
     <Compile Include="Activity2EditPage.cs" />
     <Compile Include="Activity3InsertData.cs" />
     <Compile Include="GalleryActivity.cs" />
+    <Compile Include="MapActivity.cs" />
     <Compile Include="PhotoAlbum.cs" />
     <Compile Include="ProductFilter.cs" />
     <Compile Include="DataBaseClass.cs" />
@@ -124,6 +125,9 @@
     <PackageReference Include="Xamarin.Android.Support.v7.CardView">
       <Version>27.0.2.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Itemi.axml">
@@ -160,6 +164,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Map.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

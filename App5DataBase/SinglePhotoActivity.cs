@@ -85,7 +85,8 @@ namespace App5DataBase
         {
             ImageView imageView = new ImageView(context);
             imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
-          
+            // Bitmap photo = GalleryActivity.mPhotoAlbum[GetItemPosition("photo")];
+           // int lastposition = GalleryActivity.mPhotoAlbum.IndexOf(Bitmap );
             imageView.SetImageBitmap(GalleryActivity.mPhotoAlbum[position]);
             ((ViewPager)container).AddView(imageView, 0);
             return imageView;

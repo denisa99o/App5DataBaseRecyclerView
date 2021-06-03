@@ -14,7 +14,7 @@
 		
 	<Button
 			android:text="Insert"
-			android:layout_width="wrap_content"
+			android:layout_width="60dp"
             android:layout_height="wrap_content"
 			android:textColor="@color/white"
 			android:background="@color/green"
@@ -24,7 +24,7 @@
 
 			<Button
 			android:text="Delete"
-			android:layout_width="wrap_content"
+			android:layout_width="60dp"
             android:layout_height="wrap_content"
 			android:layout_marginLeft="2dp"
 			android:textColor="@color/white"
@@ -36,12 +36,23 @@
 
 		<Button
 			android:text="Gallery"
-			android:layout_width="wrap_content"
+			android:layout_width="60dp"
             android:layout_height="wrap_content"
 			android:layout_marginLeft="2dp"
 			android:textColor="@color/white"
 			android:background="@android:color/holo_purple"
 			android:id="@+id/btnGallery" 
+		   
+		/>
+
+			<Button
+			android:text="Map"
+			android:layout_width="60dp"
+            android:layout_height="wrap_content"
+			android:layout_marginLeft="2dp"
+			android:textColor="@color/white"
+			android:background="@android:color/holo_green_dark"
+			android:id="@+id/btnMap" 
 		   
 		/>
 		</LinearLayout>

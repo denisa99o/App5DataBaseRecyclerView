@@ -253,6 +253,17 @@ namespace App5DataBase
             Button btnGallery = FindViewById<Button>(Resource.Id.btnGallery);
             btnGallery.Click += BtnGallery_Click;
 
+            //Map-button
+            Button btnMap = FindViewById<Button>(Resource.Id.btnMap);
+            btnMap.Click += BtnMap_Click;
+
+        }
+
+        private void BtnMap_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Intent nextActivity = new Intent(this, typeof(MapActivity));
+            StartActivity(nextActivity);
         }
 
         private void BtnGallery_Click(object sender, EventArgs e)
