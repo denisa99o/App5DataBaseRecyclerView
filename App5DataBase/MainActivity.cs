@@ -26,6 +26,7 @@ namespace App5DataBase
         private List<Product> mProductsCopy;
         private List<Product> mProductsCD;
         private List<Magazin> mMagazin;
+        private List<Depozit> mDepozit;
         public IMenu menu;
         DataBaseClass db;
         private int lastPosition;
@@ -183,6 +184,14 @@ namespace App5DataBase
               
 
             }
+
+            else if (requestCode == 444 && resultCode == Result.Ok)
+            {
+                Depozit depozit;
+                string jsonDepozit = data.GetStringExtra("depozit");
+                depozit = JsonSerializer.Deserialize<Depozit>(jsonDepozit);
+                db.addDepozit(depozit);
+            }
         }
 
 
@@ -257,6 +266,20 @@ namespace App5DataBase
             Button btnMap = FindViewById<Button>(Resource.Id.btnMap);
             btnMap.Click += BtnMap_Click;
 
+
+            Depozit newDepozit = new Depozit();
+            mDepozit = db.getAllDepozite();
+
+            Button btnDepozit = FindViewById<Button>(Resource.Id.btnDepozit);
+            btnDepozit.Click += BtnDepozit_Click;
+
+        }
+
+        private void BtnDepozit_Click(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+            Intent nextActivity = new Intent(this, typeof(InsertDepozitActivity));
+            StartActivityForResult(nextActivity, 444);
         }
 
         private void BtnMap_Click(object sender, EventArgs e)

@@ -12,9 +12,13 @@ using Android.Widget;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using static Android.Gms.Maps.GoogleMap;
+using Android.Gms.Location;
+using Android.Util;
 
 namespace App5DataBase
 {
+
+   
     [Activity(Label = "MapActivity")]
     public class MapActivity : Activity, IOnMapReadyCallback, IInfoWindowAdapter
     {
@@ -24,7 +28,7 @@ namespace App5DataBase
         private Button btnTerrain;
         private GoogleMap mMap;
         private DataBaseClass database;
-        JavaList<Magazin> mMagazine;
+        JavaList<Depozit> mDepozit;
 
 
         public void OnMapReady(GoogleMap googleMap)
@@ -38,11 +42,11 @@ namespace App5DataBase
             CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(latlng,10); //pune camera pe marker
             googleMap.MoveCamera(cameraUpdate);
             //we create an instance of Marker Options
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.SetPosition(latlng);
-            markerOptions.SetTitle("My location");
-            markerOptions.SetSnippet("Cluj-Napoca");
-            markerOptions.Draggable(true); //pot misca marker-ul pe harta
+            //MarkerOptions markerOptions = new MarkerOptions();
+            //markerOptions.SetPosition(latlng);
+            //markerOptions.SetTitle("My location");
+            //markerOptions.SetSnippet("Cluj-Napoca");
+            //markerOptions.Draggable(true); //pot misca marker-ul pe harta
 
             //add another marker
 
@@ -51,20 +55,20 @@ namespace App5DataBase
             //  var bmDescriptor = BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan);
             //  markerOptions.InvokeIcon(bmDescriptor);
             //Marker1
-            googleMap.AddMarker(markerOptions); //To add a marker
+           // googleMap.AddMarker(markerOptions); //To add a marker
 
-            //foreach (Magazin m in mMagazine)
-            //{
-            //    MarkerOptions markerOptions = new MarkerOptions();
-            //    var random1 = new Random();
+            foreach (Depozit d in mDepozit)
+           {
+               MarkerOptions markerOptions = new MarkerOptions();
+             //  var random1 = new Random();
             //    var random2 = new Random();
             //    double randomnumber1 = random1.Next();
             //    double randomnumber2 = random2.Next();
 
-            //    markerOptions.SetPosition(new LatLng(randomnumber1, randomnumber2));
-            //    markerOptions.SetTitle(m.Name);
-            //    googleMap.AddMarker(markerOptions); //To add a marker
-            //}
+             markerOptions.SetPosition(new LatLng(d.Latitudine,d.Longitudine ));
+                markerOptions.SetTitle(d.Name);
+                googleMap.AddMarker(markerOptions); //To add a marker
+            }
 
            
 
@@ -75,7 +79,7 @@ namespace App5DataBase
 
             googleMap.MapType = GoogleMap.MapTypeHybrid; //satellite map
 
-
+            googleMap.MyLocationEnabled = true;
 
 
             //Optional2
@@ -97,15 +101,16 @@ namespace App5DataBase
             //googleMap.MoveCamera(cameraUpdate);
 
             // Marker 2
-            googleMap.AddMarker(new MarkerOptions()
-                .SetPosition(latlng2)
-                .SetTitle("Marker 2")
-                .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
+            //googleMap.AddMarker(new MarkerOptions()
+            //    .SetPosition(latlng2)
+            //    .SetTitle("Marker 2")
+            //    .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue)));
 
             mMap.MarkerClick += MMap_MarkerClick;
                 
             mMap.MarkerDragEnd += MMap_MarkerDragEnd;
             mMap.SetInfoWindowAdapter(this);
+
         }
 
         private void MMap_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
@@ -141,10 +146,10 @@ namespace App5DataBase
             mapFrag.GetMapAsync(this);
 
             database = new DataBaseClass();
-            mMagazine = new JavaList<Magazin>();
+            mDepozit = new JavaList<Depozit>();
 
-            foreach (Magazin m in database.getAllMagazin())
-               mMagazine.Add(m);
+            foreach (Depozit d in database.getAllDepozite())
+               mDepozit.Add(d);
 
             btnNormal = FindViewById<Button>(Resource.Id.btnNormal);
             btnHybrid = FindViewById<Button>(Resource.Id.btnHybrid);
@@ -159,9 +164,7 @@ namespace App5DataBase
            
 
         }
-
       
-
         private void BtnTerrain_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();

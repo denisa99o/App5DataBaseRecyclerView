@@ -28,6 +28,8 @@ namespace App5DataBase
             
 
             db.CreateTable<Magazin>();
+
+            db.CreateTable<Depozit>();
             
 
         }
@@ -40,6 +42,16 @@ namespace App5DataBase
        {
             db.Insert(magazin);
       }
+
+        public void addDepozit(Depozit depozit)
+        {
+            db.Insert(depozit);
+        }
+
+        public List<Depozit> getAllDepozite()
+        {
+            return db.Query<Depozit>("select * from Depozit");
+        }
         public List<Product> getAllProducts()
         {
             return db.Query<Product>("select * from Product");
@@ -126,6 +138,22 @@ namespace App5DataBase
             return Name;
         }
         public string Locatie { get; set; }
+
+       
+
+    }
+
+
+    [Table("Depozit")]
+    public class Depozit
+    {
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public int Id { get; set; }
+        [MaxLength(8)]
+        public string Name { get; set; }
+
+        public double Longitudine { get; set; }
+        public double Latitudine { get; set; }
 
     }
 

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<LinearLayout
+		android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:weightSum="100"
+        android:orientation="horizontal" >
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+      android:text="Denumire"
+      android:layout_weight="30"
+      android:gravity="left"
+	/>
+
+    <EditText
+        android:id="@+id/txtDenumire"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="90"
+        android:hint="Enter depozit name"
+     
+          
+		/>
+  </LinearLayout>
+
+  <LinearLayout
+		android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:weightSum="100"
+        android:orientation="horizontal" >
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      android:text="Longitudine"
+      android:layout_weight="30"
+      android:gravity="left"
+	/>
+    <EditText
+		android:id="@+id/txtLongitudine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+		android:layout_weight="90"
+      
+		/>
+  </LinearLayout>
+
+	 <LinearLayout
+		android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:weightSum="100"
+        android:orientation="horizontal" >
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      android:text="Lat"
+      android:layout_weight="30"
+      android:gravity="left"
+	/>
+    <EditText
+		android:id="@+id/txtLatitudine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+		android:layout_weight="90"
+		/>
+  </LinearLayout>
+
+	 <LinearLayout
+		android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:weightSum="100"
+		android:paddingTop="30dp"
+        android:orientation="horizontal" >
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      android:textStyle="bold"
+      android:text="Click here to insert"
+      android:layout_weight="30"
+      android:gravity="left"
+	/>
+
+
+    <Button
+			android:text="Insert"
+			android:layout_width="0dp"
+            android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:background="@color/green"
+			android:layout_weight="50"
+			android:id="@+id/btnInsertDepozit"
+		   
+		/>
+  </LinearLayout>
+</LinearLayout>
