@@ -298,6 +298,28 @@ namespace App5DataBase
                 btnValutaEur.Text = ex.Message;
                 btnValutaUsd.Text = ex.Message;
             }
+           
+
+            Button btnMail= FindViewById<Button>(Resource.Id.btnMail);
+            btnMail.Click += BtnMail_Click;
+
+            Button btnMail2 = FindViewById<Button>(Resource.Id.btnMail2);
+            btnMail2.Click += BtnMail2_Click;
+
+        }
+
+        private void BtnMail2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Intent nextActivity = new Intent(this, typeof(Mail2Activity));
+            StartActivity(nextActivity);
+        }
+
+        private void BtnMail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Intent nextActivity = new Intent(this, typeof(MailActivity));
+            StartActivity(nextActivity);
 
         }
 

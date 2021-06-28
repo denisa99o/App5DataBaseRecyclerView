@@ -61,7 +61,7 @@
 			android:background="@android:color/holo_green_dark"
 			android:id="@+id/btnMap" 
 		   
-		/>
+		    />
 
 			<Button
 			android:text="Depozit"
@@ -72,8 +72,28 @@
 			android:background="@color/notification_material_background_media_default_color"
 			android:id="@+id/btnDepozit" 
 		   
-		/>
+		    />
 
+			<Button
+			android:text="Mail"
+			android:layout_width="60dp"
+            android:layout_height="wrap_content"
+			android:layout_marginLeft="2dp"
+			android:textColor="@color/white"
+			android:background="@color/primary_dark_material_dark"
+			android:id="@+id/btnMail" 
+		   
+		    />
+			<Button
+			android:text="Mail"
+			android:layout_width="60dp"
+            android:layout_height="wrap_content"
+			android:layout_marginLeft="2dp"
+			android:textColor="@color/black"
+			android:background="@color/material_grey_50"
+			android:id="@+id/btnMail2" 
+		   
+		    />
 		
 			
 		</LinearLayout>
