@@ -49,7 +49,8 @@
 		<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:layout_marginTop="2dp">
 
 			<Button
 			android:text="Map"
@@ -70,6 +71,39 @@
 			android:textColor="@color/white"
 			android:background="@color/notification_material_background_media_default_color"
 			android:id="@+id/btnDepozit" 
+		   
+		/>
+
+		
+			
+		</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:text="Curs Valutar "
+			android:layout_width="120dp"
+            android:layout_height="wrap_content"
+			android:layout_marginTop="2dp"
+			android:textColor="@color/white"
+			android:background="@color/abc_search_url_text_normal"
+			android:id="@+id/btnValutaEur" 
+		   
+		/>
+
+				<Button
+			android:text="Curs Valutar "
+			android:layout_width="120dp"
+            android:layout_height="wrap_content"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="4dp"
+			android:layout_marginTop="2dp"
+			android:textColor="@color/white"
+			android:background="@color/abc_search_url_text_normal"
+			android:id="@+id/btnValutaUsd" 
 		   
 		/>
 		</LinearLayout>

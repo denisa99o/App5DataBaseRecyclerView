@@ -273,6 +273,48 @@ namespace App5DataBase
             Button btnDepozit = FindViewById<Button>(Resource.Id.btnDepozit);
             btnDepozit.Click += BtnDepozit_Click;
 
+            Button btnValutaEur = FindViewById<Button>(Resource.Id.btnValutaEur);
+            Button btnValutaUsd = FindViewById<Button>(Resource.Id.btnValutaUsd);
+
+            try
+            {
+                ro.infovalutar.www.Curs curs = new ro.infovalutar.www.Curs();
+                double valE = curs.GetValue(DateTime.Now, "EUR");
+                double valU = curs.GetValue(DateTime.Now, "USD");
+                btnValutaEur.Text = "1 Euro=" + valE.ToString() + "Lei";
+                btnValutaUsd.Text = "1 USD=" + valU.ToString() + "Lei";
+                btnValutaEur.Click += BtnValutaEur_Click;
+                btnValutaUsd.Click += BtnValutaUsd_Click;
+                
+                
+            }
+            catch (System.Net.WebException)
+            {
+                btnValutaEur.Text="Please ensure you are connected to the internet";
+                btnValutaUsd.Text = "Please ensure you are connected to the internet";
+            }
+            catch (Exception ex)
+            {
+                btnValutaEur.Text = ex.Message;
+                btnValutaUsd.Text = ex.Message;
+            }
+
+        }
+
+        private void BtnValutaUsd_Click(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+            ro.infovalutar.www.Curs curs = new ro.infovalutar.www.Curs();
+            double valU = curs.GetValue(DateTime.Now, "USD");
+            Toast.MakeText(ApplicationContext, "1 Usd=" + valU.ToString() + "lei", ToastLength.Long).Show();
+        }
+
+        private void BtnValutaEur_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ro.infovalutar.www.Curs curs = new ro.infovalutar.www.Curs();
+            double valE = curs.GetValue(DateTime.Now, "EUR");
+            Toast.MakeText(ApplicationContext, "1 Euro=" + valE.ToString() + "lei", ToastLength.Long).Show();
         }
 
         private void BtnDepozit_Click(object sender, EventArgs e)
